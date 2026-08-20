@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="description" content="PaperGomoku — offline five-in-row for e-ink: 1v1 vs bot or 2v2 pair teams.">
+    <title>PaperGomoku</title>
+    <link rel="stylesheet" href="css/papergomoku.css?v=7">
+</head>
+<body>
+
+    <!-- ============ START SCREEN ============ -->
+    <div id="screen-start" class="screen">
+
+        <div class="masthead">
+            <div class="logo">PAPER<em>GOMOKU</em></div>
+            <div class="tag">OFFLINE FIVE-IN-A-ROW FOR E-READERS</div>
+            <div class="deco"><span class="stone-d">&#9679;</span><span class="stone-l">&#9675;</span><span class="stone-d">&#9679;</span><span class="stone-l">&#9675;</span><span class="stone-d">&#9679;</span></div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-label">MODE</div>
+            <div id="mode-tiles">
+                <div class="side-tile" data-v="1"><b>1 VS 1</b><small>you vs bot</small></div>
+                <div class="side-tile" data-v="2"><b>2 PLAYER</b><small>human vs human</small></div>
+            </div>
+
+            <div id="sec-level">
+            <div class="panel-label">BOT LEVEL</div>
+            <div id="lvl-list">
+                <div class="lvl-row" data-v="1"><b>1</b><span class="nm">Casual</span><span class="er">loose play</span></div>
+                <div class="lvl-row" data-v="2"><b>2</b><span class="nm">Club</span><span class="er">sharp defense</span></div>
+                <div class="lvl-row" data-v="3"><b>3</b><span class="nm">Master</span><span class="er">attack scoring</span></div>
+            </div>
+            </div>
+
+            <div id="sec-side">
+            <div class="panel-label">PLAY AS</div>
+            <div id="side-tiles">
+                <div class="side-tile" data-v="1"><b>BLACK &#9679;</b><small>you move first</small></div>
+                <div class="side-tile" data-v="2"><b>WHITE &#9675;</b><small>bot moves first</small></div>
+            </div>
+            </div>
+
+            <div id="sec-seats" style="display:none;">
+            <div class="panel-label">TWO PLAYERS &middot; BLACK FIRST</div>
+            <div class="hint-line">share one device &middot; alternate turns</div>
+            <div class="hint-line">undo takes back one move</div>
+            <button class="btn alt" id="btn-reset-score" style="display:none;">RESET SCORE</button>
+            </div>
+
+            <button class="btn go" id="btn-start">START GAME</button>
+            <button class="btn alt" id="btn-resume" style="display:none;">CONTINUE SAVED GAME</button>
+            <div class="stat-line" id="start-stats">&nbsp;</div>
+        </div>
+
+        <div class="start-foot">no network &middot; no account &middot; saves on device</div>
+        <div class="made">MADE BY <a href="https://8ugust.dev" rel="noopener">8UGUST.DEV</a></div>
+    </div>
+
+    <!-- ============ PLAY SCREEN ============ -->
+    <div id="screen-play" class="screen hidden">
+        <div class="play-top">
+            <span class="brand2">PAPER<em>GOMOKU</em></span>
+            <span class="turn" id="turn-label">YOUR MOVE</span>
+            <span class="clock" id="clock">0:00</span>
+        </div>
+
+        <div id="board-wrap">
+            <table id="board" cellpadding="0" cellspacing="0" border="0"></table>
+            <div class="board-pop" id="over-pop">
+                <div class="pop-title" id="over-title">GAME OVER</div>
+                <div class="pop-body" id="over-body">&nbsp;</div>
+                <div class="pop-btns">
+                    <button class="mbtn" id="btn-again">NEW GAME</button>
+                    <button class="mbtn" id="btn-close-over">CLOSE</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="btn-row" id="btn-row">
+            <button class="btn" id="btn-undo">UNDO</button>
+            <button class="btn" id="btn-hint">HINT</button>
+            <button class="btn" id="btn-menu">MENU</button>
+        </div>
+    </div>
+
+    <!-- ============ MENU ============ -->
+    <div class="overlay hidden" id="menu-modal">
+        <div class="box">
+            <div class="box-title">MENU</div>
+            <div class="box-inner">
+                <button class="btn" id="btn-new">NEW GAME</button>
+                <button class="btn" id="btn-exit">CHANGE SETUP</button>
+                <button class="btn alt" id="btn-close-menu">BACK TO GAME</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/engine.js?v=5"></script>
+    <script src="js/app.js?v=6"></script>
+</body>
+</html>
